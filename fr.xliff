@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="ANFramework/Login/Base.lproj/Login.storyboard" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+    </header>
+    <body>
+      <trans-unit id="0Cn-fz-KsH.text">
+        <source>  I accept</source>
+        <target>  I accept</target>
+        <note>Class = "UILabel"; text = "I accept"; ObjectID = "0Cn-fz-KsH";</note>
+      </trans-unit>
+      <trans-unit id="2zi-QX-cae.text">
+        <source>Forgot something?</source>
+        <target>Forgot something?</target>
+        <note>Class = "UILabel"; text = "Forgot something?"; ObjectID = "2zi-QX-cae";</note>
+      </trans-unit>
+      <trans-unit id="7Vj-Dd-nAe.title">
+        <source>Ariba Supplier</source>
+        <target>Ariba Supplier</target>
+        <note>Class = "UINavigationController"; title = "Ariba Supplier"; ObjectID = "7Vj-Dd-nAe";</note>
+      </trans-unit>
+      <trans-unit id="62I-Nl-bnE.text">
+        <source>Welcome to Ariba!</source>
+        <target>Welcome to Ariba!</target>
+        <note>Class = "UILabel"; text = "Welcome to Ariba!"; ObjectID = "62I-Nl-bnE";</note>
+      </trans-unit>
+      <trans-unit id="E3l-Az-Sjv.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]">
+        <source>This is a comment</source>
+        <target>This is a comment</target>
+        <note>Class = "UILabel"; E3l-Az-Sjv.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "This is a comment"; ObjectID = "E3l-Az-Sjv";</note>
+      </trans-unit>
+      <trans-unit id="E3l-Az-Sjv.text">
+        <source>Login</source>
+        <target>Login</target>
+        <note>Class = "UILabel"; text = "Login"; ObjectID = "E3l-Az-Sjv";</note>
+      </trans-unit>
+      <trans-unit id="Ee5-K2-46X.normalTitle">
+        <source>Password</source>
+        <target>Password</target>
+        <note>Class = "UIButton"; normalTitle = "Password"; ObjectID = "Ee5-K2-46X";</note>
+      </trans-unit>
+      <trans-unit id="FBQ-Cq-A2C.title">
+        <source>Ariba Supplier</source>
+        <target>Ariba Supplier</target>
+        <note>Class = "UINavigationItem"; title = "Ariba Supplier"; ObjectID = "FBQ-Cq-A2C";</note>
+      </trans-unit>
+      <trans-unit id="One-hn-p0L.text">
+        <source> | </source>
+        <target> | </target>
+        <note>Class = "UILabel"; text = " | "; ObjectID = "One-hn-p0L";</note>
+      </trans-unit>
+      <trans-unit id="RJg-Dv-Ry9.normalTitle">
+        <source>Continue</source>
+        <target>Continue</target>
+        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "RJg-Dv-Ry9";</note>
+      </trans-unit>
+      <trans-unit id="RSS-mA-swc.text">
+        <source>Which of the following best describes your business role?</source>
+        <target>Which of the following best describes your business role?</target>
+        <note>Class = "UILabel"; text = "Which of the following best describes your business role?"; ObjectID = "RSS-mA-swc";</note>
+      </trans-unit>
+      <trans-unit id="TU1-VB-gru.title">
+        <source>Ariba Supplier</source>
+        <target>Ariba Supplier</target>
+        <note>Class = "UINavigationItem"; title = "Ariba Supplier"; ObjectID = "TU1-VB-gru";</note>
+      </trans-unit>
+      <trans-unit id="VC3-DF-cxM.text">
+        <source>Business Role</source>
+        <target>Business Role</target>
+        <note>Class = "UITextField"; text = "Business Role"; ObjectID = "VC3-DF-cxM";</note>
+      </trans-unit>
+      <trans-unit id="WVr-IK-j2S.text">
+        <source>An Accounts Receivable role represents a user focused on money owed to the company. Orders are filtered by orders to be invoiced. Invoices are filtered by invoices that have been rejected.</source>
+        <target>An Accounts Receivable role represents a user focused on money owed to the company. Orders are filtered by orders to be invoiced. Invoices are filtered by invoices that have been rejected.</target>
+        <note>Class = "UILabel"; text = "An Accounts Receivable role represents a user focused on money owed to the company. Orders are filtered by orders to be invoiced. Invoices are filtered by invoices that have been rejected."; ObjectID = "WVr-IK-j2S";</note>
+      </trans-unit>
+      <trans-unit id="YCb-As-YlM.text">
+        <source>  I accept</source>
+        <target>  I accept</target>
+        <note>Class = "UILabel"; text = "  I accept"; ObjectID = "YCb-As-YlM";</note>
+      </trans-unit>
+      <trans-unit id="ZK0-Ak-7Bx.text">
+        <source>Ariba displays information relevant to your business role</source>
+        <target>Ariba displays information relevant to your business role</target>
+        <note>Class = "UILabel"; text = "Ariba displays information relevant to your business role"; ObjectID = "ZK0-Ak-7Bx";</note>
+      </trans-unit>
+      <trans-unit id="cVF-bA-WOn.placeholder">
+        <source>Username</source>
+        <target>Username</target>
+        <note>Class = "UITextField"; placeholder = "Username"; ObjectID = "cVF-bA-WOn";</note>
+      </trans-unit>
+      <trans-unit id="cVF-bA-WOn.text">
+        <source>seller102@sap.com</source>
+        <target>seller102@sap.com</target>
+        <note>Class = "UITextField"; text = "seller102@sap.com"; ObjectID = "cVF-bA-WOn";</note>
+      </trans-unit>
+      <trans-unit id="hTm-yd-RlO.title">
+        <source>Select Business Role</source>
+        <target>Select Business Role</target>
+        <note>Class = "UINavigationItem"; title = "Select Business Role"; ObjectID = "hTm-yd-RlO";</note>
+      </trans-unit>
+      <trans-unit id="ngP-O9-9yR.placeholder">
+        <source>Password</source>
+        <target>Password</target>
+        <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "ngP-O9-9yR";</note>
+      </trans-unit>
+      <trans-unit id="ngP-O9-9yR.text">
+        <source>welcome</source>
+        <target>welcome</target>
+        <note>Class = "UITextField"; text = "welcome"; ObjectID = "ngP-O9-9yR";</note>
+      </trans-unit>
+      <trans-unit id="s6l-tg-4aM.normalTitle">
+        <source>Login</source>
+        <target>Login</target>
+        <note>Class = "UIButton"; normalTitle = "Login"; ObjectID = "s6l-tg-4aM";</note>
+      </trans-unit>
+      <trans-unit id="vDh-Vt-pwC.normalTitle">
+        <source>Username</source>
+        <target>Username</target>
+        <note>Class = "UIButton"; normalTitle = "Username"; ObjectID = "vDh-Vt-pwC";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ANFramework/Misc/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ANFramework/Misc/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+    </header>
+    <body>
+      <trans-unit id="1 customer">
+        <source>1 customer</source>
+        <note>This is the label in collections filter status</note>
+      </trans-unit>
+      <trans-unit id="Amount Due">
+        <source>Amount Due</source>
+        <note>this is the label for info tab
+   this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Ariba Network Terms of Use">
+        <source>Ariba Network Terms of Use</source>
+        <note>Link to ariba network terms of use, this string must be contained within the AN TOU and privacy link paragraph</note>
+      </trans-unit>
+      <trans-unit id="Ariba Privacy Statement">
+        <source>Ariba Privacy Statement</source>
+        <note>Link to ariba privacy statement, this string must be contained within the AN TOU and privacy link paragraph</note>
+      </trans-unit>
+      <trans-unit id="Ariba Supplier">
+        <source>Ariba Supplier</source>
+        <note>Title for top navigation bar.</note>
+      </trans-unit>
+      <trans-unit id="Attachments">
+        <source>Attachments</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Bill From">
+        <source>Bill From</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Bill To">
+        <source>Bill To</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="City">
+        <source>City</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Country">
+        <source>Country</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Created on">
+        <source>Created on</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Customer">
+        <source>Customer</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Description">
+        <source>Description</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Do you want to send feedback to Ariba?">
+        <source>Do you want to send feedback to Ariba?</source>
+        <note>Dialog text when user shakes the device to send feedback</note>
+      </trans-unit>
+      <trans-unit id="Effective Date">
+        <source>Effective Date</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="End User License Agreement">
+        <source>End User License Agreement</source>
+        <note>Link to end user license agreement, this string must be contained within the mobile app TOU paragraph</note>
+      </trans-unit>
+      <trans-unit id="Error">
+        <source>Error</source>
+        <note>Title for popup error message box.
+   Title for the message shown to the user if the server is not reachable.</note>
+      </trans-unit>
+      <trans-unit id="Expiration Date">
+        <source>Expiration Date</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Filter by Customers">
+        <source>Filter by Customers</source>
+        <note>this is the section label for filter page</note>
+      </trans-unit>
+      <trans-unit id="Filter by Status">
+        <source>Filter by Status</source>
+        <note>this is the section label for filter page</note>
+      </trans-unit>
+      <trans-unit id="Installation and use of this mobile application is subject to the End User License Agreement.">
+        <source>Installation and use of this mobile application is subject to the End User License Agreement.</source>
+        <note>This is the paragraph describing the mobile app TOU with link to it.</note>
+      </trans-unit>
+      <trans-unit id="Invoice">
+        <source>Invoice</source>
+        <note>this is the title for the detail section</note>
+      </trans-unit>
+      <trans-unit id="Invoices">
+        <source>Invoices</source>
+        <note>this is the title for the master section</note>
+      </trans-unit>
+      <trans-unit id="Item (%d of %d)">
+        <source>Item (%1$d of %2$d)</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Line #">
+        <source>Line #</source>
+        <note>this is the label for line items tab</note>
+      </trans-unit>
+      <trans-unit id="Loading...">
+        <source>Loading...</source>
+        <note>Default message for busy indicator.</note>
+      </trans-unit>
+      <trans-unit id="Need by">
+        <source>Need by</source>
+        <note>this is the label for info tab
+   this is the label for line items tab</note>
+      </trans-unit>
+      <trans-unit id="No">
+        <source>No</source>
+        <note>No button in the yes / no message box</note>
+      </trans-unit>
+      <trans-unit id="No results from the last 7 days">
+        <source>No results from the last 7 days</source>
+        <note>this is the empty message for collections</note>
+      </trans-unit>
+      <trans-unit id="No results from the last 14 days">
+        <source>No results from the last 14 days</source>
+        <note>this is the empty message for collections</note>
+      </trans-unit>
+      <trans-unit id="No results from the last 24 hours">
+        <source>No results from the last 24 hours</source>
+        <note>this is the empty message for collections</note>
+      </trans-unit>
+      <trans-unit id="Order">
+        <source>Order</source>
+        <note>this is the title for the detail section</note>
+      </trans-unit>
+      <trans-unit id="Orders">
+        <source>Orders</source>
+        <note>this is the title for the master section</note>
+      </trans-unit>
+      <trans-unit id="Part #">
+        <source>Part #</source>
+        <note>this is the label for line items tab</note>
+      </trans-unit>
+      <trans-unit id="Pay by">
+        <source>Pay by</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Payment Terms">
+        <source>Payment Terms</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Phone">
+        <source>Phone</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Pinned">
+        <source>Pinned</source>
+        <note>This is the label in collections filter status</note>
+      </trans-unit>
+      <trans-unit id="Place your finger on the Home button to log in to Ariba Supplier.">
+        <source>Place your finger on the Home button to log in to Ariba Supplier.</source>
+        <note>Request the user to place a finger on the Home button to authenticate for OTP.</note>
+      </trans-unit>
+      <trans-unit id="Postal Code">
+        <source>Postal Code</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Qty (Unit)">
+        <source>Qty (Unit)</source>
+        <note>this is the label for items table</note>
+      </trans-unit>
+      <trans-unit id="Reference">
+        <source>Reference</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Remit To">
+        <source>Remit To</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Ship From">
+        <source>Ship From</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Ship To">
+        <source>Ship To</source>
+        <note>this is the label for info tab
+   this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Ship to">
+        <source>Ship to</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="Show Pinned Only">
+        <source>Show Pinned Only</source>
+        <note>this is the section label for filter page</note>
+      </trans-unit>
+      <trans-unit id="Since your last login to the Ariba Network, the terms and policies governing the user of the Ariba Network have been updated. The Ariba Network Terms of Use and Ariba Privacy Statement apply to use of the Ariba Network. Please review these terms and confirm acceptance before continuing use of the service.">
+        <source>Since your last login to the Ariba Network, the terms and policies governing the user of the Ariba Network have been updated. The Ariba Network Terms of Use and Ariba Privacy Statement apply to use of the Ariba Network. Please review these terms and confirm acceptance before continuing use of the service.</source>
+        <note>This is the paragraph describing the AN TOU and privacy statement with links to them.</note>
+      </trans-unit>
+      <trans-unit id="Source Document">
+        <source>Source Document</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="State">
+        <source>State</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Street">
+        <source>Street</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Subtotal">
+        <source>Subtotal</source>
+        <note>this is the label for info tab summary detail page
+   this is the label for line items tab</note>
+      </trans-unit>
+      <trans-unit id="Supplier">
+        <source>Supplier</source>
+        <note>this is the label for info tab</note>
+      </trans-unit>
+      <trans-unit id="The server was unable to process your request. Please try again later.">
+        <source>The server was unable to process your request. Please try again later.</source>
+        <note>Server is not able to process the request during a normal network request.</note>
+      </trans-unit>
+      <trans-unit id="The username and password pair you entered was not found.">
+        <source>The username and password pair you entered was not found.</source>
+        <note>Username and / or password not found or wrong during activation login.</note>
+      </trans-unit>
+      <trans-unit id="There was an error connecting to the server. Please retry.">
+        <source>There was an error connecting to the server. Please retry.</source>
+        <note>Unexpected server error during a normal network request.</note>
+      </trans-unit>
+      <trans-unit id="Total Allowances">
+        <source>Total Allowances</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Total Amount without Tax">
+        <source>Total Amount without Tax</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Total Charges">
+        <source>Total Charges</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Total Gross Amount">
+        <source>Total Gross Amount</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Total Net Amount">
+        <source>Total Net Amount</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Total Tax">
+        <source>Total Tax</source>
+        <note>this is the label for info tab summary detail page</note>
+      </trans-unit>
+      <trans-unit id="Type">
+        <source>Type</source>
+        <note>this is the label for line items tab</note>
+      </trans-unit>
+      <trans-unit id="Unit Price">
+        <source>Unit Price</source>
+        <note>this is the label for line items tab</note>
+      </trans-unit>
+      <trans-unit id="Yes">
+        <source>Yes</source>
+        <note>Yes button in the yes / no message box</note>
+      </trans-unit>
+      <trans-unit id="You cannot log in to Ariba Supplier because your Ariba Network account is locked. Please visit the Ariba Network portal and initiate the password reset process to unlock your account.">
+        <source>You cannot log in to Ariba Supplier because your Ariba Network account is locked. Please visit the Ariba Network portal and initiate the password reset process to unlock your account.</source>
+        <note>Account locked error message during activation login.</note>
+      </trans-unit>
+      <trans-unit id="You shook your device!">
+        <source>You shook your device!</source>
+        <note>Dialog title when user shakes the device to send feedback</note>
+      </trans-unit>
+      <trans-unit id="Your device is offline. This app works only when online.">
+        <source>Your device is offline. This app works only when online.</source>
+        <note>Message that is shown to the user if the server is not reachable.</note>
+      </trans-unit>
+      <trans-unit id="second remaining">
+        <source>second remaining</source>
+        <note>Singular form of seconds remaining in the OTP count down timer.</note>
+      </trans-unit>
+      <trans-unit id="seconds remaining">
+        <source>seconds remaining</source>
+        <note>Seconds remaining in the OTP count down timer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Frameworks/PasscodeLock/en.lproj/PasscodeLock.strings" source-language="en" datatype="plaintext" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.3.1" build-num="7D1014"/>
+    </header>
+    <body>
+      <trans-unit id="PasscodeLockChangeDescription">
+        <source>Enter your old passcode.</source>
+        <target>Enter your old passcode.</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockChangeTitle">
+        <source>Enter Old Passcode</source>
+        <target>Enter Old Passcode</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockConfirmDescription">
+        <source>Enter the passcode again.</source>
+        <target>Enter the passcode again.</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockConfirmTitle">
+        <source>Confirm Passcode</source>
+        <target>Confirm Passcode</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockEnterDescription">
+        <source>Enter your passcode to proceed.</source>
+        <target>Enter your passcode to proceed.</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockEnterTitle">
+        <source>Enter Passcode</source>
+        <target>Enter Passcode</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockMismatchDescription">
+        <source>Passcodes didn't match.</source>
+        <target>Passcodes didn't match.</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockMismatchTitle">
+        <source>Try again</source>
+        <target>Try again</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockSetDescription">
+        <source>Choose your passcode.</source>
+        <target>Choose your passcode.</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockSetTitle">
+        <source>Enter a Passcode</source>
+        <target>Enter a Passcode</target>
+      </trans-unit>
+      <trans-unit id="PasscodeLockTouchIDReason">
+        <source>Authentication required to proceed</source>
+        <target>Authentication required to proceed</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
