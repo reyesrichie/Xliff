@@ -1,5 +1,7 @@
 import re
-import xml.etree.ElementTree as Et
+import xml
+from xml.dom import minidom
+from xml.etree.ElementTree import SubElement, Element, tostring
 
 
 class Xliff:
@@ -18,7 +20,7 @@ class Xliff:
 
     @classmethod
     def read_from_disk(cls, filename):
-        tree = Et.parse(filename)
+        tree = xml.etree.ElementTree.parse(filename)
         root = tree.getroot()
         tag = Xliff.clean_tag(root.tag)
         if tag == 'xliff':
@@ -26,7 +28,8 @@ class Xliff:
 
     @classmethod
     def parse(cls, root):
-        raw_xmlns = ''.join(filter(lambda y: y is not None, map(lambda x: Xliff.parse_xmlns(x), root.attrib))).strip('{}')
+        raw_xmlns = ''.join(filter(lambda y: y is not None, map(lambda x: Xliff.parse_xmlns(x), root.attrib))).strip(
+            '{}')
         xsi_schema = root.attrib['{' + raw_xmlns + '}' + 'schemaLocation'].split(' ')
         xmlns = xsi_schema[0]
         xmlns_xsi = raw_xmlns
@@ -41,6 +44,13 @@ class Xliff:
                 files.append(File.parse(element))
 
         return Xliff(xmlns, xmlns_xsi, version, xsi_schema_location, files)
+
+    def toxml(self):
+        xliff = Element('xliff')
+        xliff.attrib = {'xmlns': self.xmlns, 'xmlns:xsi': self.xmlns_xsi, 'version': self.version,
+                       'xsi:schemaLocation': self.xmlns + ' ' + self.xsi_schema_location}
+        map(lambda file: file.toxml(xliff), self.files)
+        return minidom.parseString(tostring(xliff, 'utf-8')).toprettyxml(indent="    ")
 
     @classmethod
     def clean_tag(cls, tag):
@@ -79,6 +89,11 @@ class Xliff:
 
                 file.body.trans_units.remove(comment)
 
+    def write_to_file(self, filename):
+        output = self.toxml()
+        output_file = file(filename, 'w')
+        output_file.write(output)
+
 
 class File:
     original = ""
@@ -116,6 +131,14 @@ class File:
 
         return File(original, source_language, data_type, target_language, header, body)
 
+    def toxml(self, parent):
+        file = SubElement(parent, 'file')
+        file.attrib = {'original': self.original, 'source-language': self.source_language, 'datatype': self.data_type,
+                       'target-language': self.target_language}
+        self.header.toxml(file)
+        self.body.toxml(file)
+        return file
+
 
 class Header:
     tools = []
@@ -135,6 +158,11 @@ class Header:
                 tools.append(Tool.parse(element))
 
         return Header(tools)
+
+    def toxml(self, parent):
+        header = SubElement(parent, 'header')
+        map(lambda tool: tool.toxml(header), self.tools)
+        return header
 
 
 class Tool:
@@ -158,6 +186,12 @@ class Tool:
 
         return Tool(tool_id, tool_name, tool_version, build_num)
 
+    def toxml(self, parent):
+        tool = SubElement(parent, 'tool')
+        tool.attrib = {'tool-id': self.tool_id, 'tool-name': self.tool_name, 'tool-version': self.tool_version,
+                       'build-num': self.build_num}
+        return tool
+
 
 class Body:
     trans_units = []
@@ -176,6 +210,12 @@ class Body:
                 trans_units.append(TransUnit.parse(element))
 
         return Body(trans_units)
+
+    def toxml(self, parent):
+        body = SubElement(parent, 'body')
+        map(lambda unit: unit.toxml(body), self.trans_units)
+
+        return body
 
     @classmethod
     def get_translator_comments(cls, body):
@@ -231,6 +271,15 @@ class TransUnit:
         else:
             return ""
 
+    def toxml(self, parent):
+        unit = SubElement(parent, 'trans-unit')
+        unit.attrib = {'id': self.trans_unit_id}
+        map(lambda source: source.toxml(unit), self.sources)
+        map(lambda target: target.toxml(unit), self.targets)
+        map(lambda note: note.toxml(unit), self.notes)
+
+        return unit
+
 
 class Source:
     text = ""
@@ -242,6 +291,11 @@ class Source:
     def parse(cls, data):
         return Source(data.text)
 
+    def toxml(self, parent):
+        source = SubElement(parent, 'source')
+        source.text = self.text
+        return source
+
 
 class Target:
     text = ""
@@ -252,6 +306,11 @@ class Target:
     @classmethod
     def parse(cls, data):
         return Target(data.text)
+
+    def toxml(self, parent):
+        target = SubElement(parent, 'target')
+        target.text = self.text
+        return target
 
 
 class Note:
@@ -294,6 +353,11 @@ class Note:
             translator_comment = data.text
 
         return Note(class_name, text, object_id, translator_comment)
+
+    def toxml(self, parent):
+        note = SubElement(parent, 'note')
+        note.text = self.translator_comment
+        return note
 
     @classmethod
     def list_to_dict(cls, list):
