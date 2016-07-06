@@ -26,9 +26,10 @@ class Xliff:
 
     @classmethod
     def parse(cls, root):
-        xmlns = ''.join(filter(lambda y: y is not None, map(lambda x: Xliff.parse_xmlns(x), root.attrib))).strip('{}')
-        xsi_schema = root.attrib['{' + xmlns + '}' + 'schemaLocation'].split(' ')
-        xmlns_xsi = xsi_schema[0]
+        raw_xmlns = ''.join(filter(lambda y: y is not None, map(lambda x: Xliff.parse_xmlns(x), root.attrib))).strip('{}')
+        xsi_schema = root.attrib['{' + raw_xmlns + '}' + 'schemaLocation'].split(' ')
+        xmlns = xsi_schema[0]
+        xmlns_xsi = raw_xmlns
         xsi_schema_location = xsi_schema[1]
         version = root.attrib['version']
 
@@ -56,6 +57,27 @@ class Xliff:
             return matches.group(0)
         else:
             return None
+
+    @classmethod
+    def is_translator_comment(cls, string):
+        return 'ibExternalUserDefinedRuntimeAttributes' in string
+
+    def combine_translator_comments(self):
+        for file in self.files:
+            comments = Body.get_translator_comments(file.body)
+
+            for comment in comments:
+                object_id = TransUnit.get_object_id(comment.trans_unit_id)
+                units = Body.get_units_with_id(file.body, object_id)
+
+                translator_comments = reduce(lambda x, y: x.join(y.translator_comment), comment.notes, '')
+
+                for unit in units:
+                    if not Xliff.is_translator_comment(unit.trans_unit_id):
+                        for note in unit.notes:
+                            note.translator_comment = translator_comments
+
+                file.body.trans_units.remove(comment)
 
 
 class File:
@@ -155,6 +177,20 @@ class Body:
 
         return Body(trans_units)
 
+    @classmethod
+    def get_translator_comments(cls, body):
+        comments = []
+
+        for unit in body.trans_units:
+            if Xliff.is_translator_comment(unit.trans_unit_id):
+                comments.append(unit)
+
+        return comments
+
+    @classmethod
+    def get_units_with_id(cls, body, unit_id):
+        return filter(lambda trans_unit: (unit_id in trans_unit.trans_unit_id), body.trans_units)
+
 
 class TransUnit:
     trans_unit_id = ""
@@ -179,13 +215,21 @@ class TransUnit:
             tag = Xliff.clean_tag(element.tag)
 
             if tag == 'source':
-                sources.append(element)
+                sources.append(Source.parse(element))
             elif tag == 'target':
-                targets.append(element)
+                targets.append(Target.parse(element))
             elif tag == 'note':
-                Note.parse(element)
+                notes.append(Note.parse(element))
 
         return TransUnit(trans_unit_id, sources, targets, notes)
+
+    @classmethod
+    def get_object_id(cls, string):
+        components = string.split('.')
+        if len(components) > 0:
+            return components[0]
+        else:
+            return ""
 
 
 class Source:
@@ -220,8 +264,52 @@ class Note:
         self.class_name = class_name
         self.text = text
         self.object_id = object_id
-        self.translatorComment = translator_comment
+        self.translator_comment = translator_comment
 
     @classmethod
     def parse(cls, data):
-        print data
+        class_name = ""
+        text = ""
+        object_id = ""
+        translator_comment = ""
+
+        if "Class = " in data.text:
+            properties = Note.properties_from_string(data.text)
+            class_name = properties['Class']
+            if 'text' in properties:
+                text = properties['text']
+            elif 'title' in properties:
+                text = properties['title']
+            elif 'normalTitle' in properties:
+                text = properties['normalTitle']
+            elif 'placeholder' in properties:
+                text = properties['placeholder']
+
+            object_id = properties['ObjectID']
+
+            if "ibExternalUserDefinedRuntimeAttributesLocalizableStrings" in data.text:
+                key = object_id + '.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]'
+                translator_comment = properties[key]
+        else:
+            translator_comment = data.text
+
+        return Note(class_name, text, object_id, translator_comment)
+
+    @classmethod
+    def list_to_dict(cls, list):
+        return {list[0].strip(): list[1].strip().replace(r'"', "")}
+
+    @classmethod
+    def list_of_dicts_to_dict(self, list):
+        dicts = {}
+
+        for dict in list:
+            dicts[dict.keys()[0]] = dict.values()[0]
+
+        return dicts
+
+    @classmethod
+    def properties_from_string(cls, string):
+        separated_elements = filter(lambda x: x != '', string.split(';'))
+        separated_key_value = map(lambda y: Note.list_to_dict(y), map(lambda x: x.split('='), separated_elements))
+        return Note.list_of_dicts_to_dict(separated_key_value)
