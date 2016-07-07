@@ -315,6 +315,7 @@ class Target:
 
 class Note:
     class_name = ""
+    size = ""
     text = ""
     object_id = ""
     translator_comment = ""
@@ -332,31 +333,46 @@ class Note:
         object_id = ""
         translator_comment = ""
 
-        if "Class = " in data.text:
-            properties = Note.properties_from_string(data.text)
-            class_name = properties['Class']
-            if 'text' in properties:
-                text = properties['text']
-            elif 'title' in properties:
-                text = properties['title']
-            elif 'normalTitle' in properties:
-                text = properties['normalTitle']
-            elif 'placeholder' in properties:
-                text = properties['placeholder']
+        if data.text is not None:
+            if "Class = " in data.text:
+                properties = Note.properties_from_string(data.text)
+                class_name = properties['Class']
+                if 'text' in properties:
+                    text = properties['text']
+                elif 'title' in properties:
+                    text = properties['title']
+                elif 'normalTitle' in properties:
+                    text = properties['normalTitle']
+                elif 'placeholder' in properties:
+                    text = properties['placeholder']
 
-            object_id = properties['ObjectID']
+                if 'ObjectID' in properties:
+                    object_id = properties['ObjectID']
 
-            if "ibExternalUserDefinedRuntimeAttributesLocalizableStrings" in data.text:
-                key = object_id + '.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]'
-                translator_comment = properties[key]
-        else:
-            translator_comment = data.text
+                if "ibExternalUserDefinedRuntimeAttributesLocalizableStrings" in data.text:
+                    key = object_id + '.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]'
+                    translator_comment = properties[key]
+            else:
+                translator_comment = data.text
 
         return Note(class_name, text, object_id, translator_comment)
 
     def toxml(self, parent):
         note = SubElement(parent, 'note')
-        note.text = self.translator_comment
+        translator = ''
+
+        if self.class_name != '':
+            translator += self.class_name
+            if self.size == '':
+                translator += ': '
+            else:
+                translator += ', ' + self.size + ': '
+
+        if self.text != '':
+            translator += self.text
+
+        note.text = translator
+
         return note
 
     @classmethod
