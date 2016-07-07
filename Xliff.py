@@ -48,7 +48,7 @@ class Xliff:
     def toxml(self):
         xliff = Element('xliff')
         xliff.attrib = {'xmlns': self.xmlns, 'xmlns:xsi': self.xmlns_xsi, 'version': self.version,
-                       'xsi:schemaLocation': self.xmlns + ' ' + self.xsi_schema_location}
+                        'xsi:schemaLocation': self.xmlns + ' ' + self.xsi_schema_location}
         map(lambda file: file.toxml(xliff), self.files)
         return minidom.parseString(tostring(xliff, 'utf-8')).toprettyxml(indent="    ")
 
@@ -80,13 +80,14 @@ class Xliff:
                 object_id = TransUnit.get_object_id(comment.trans_unit_id)
                 units = Body.get_units_with_id(file.body, object_id)
 
-                translator_comments = reduce(lambda x, y: x.join(y.translator_comment), comment.notes, '')
-
                 for unit in units:
-                    if not Xliff.is_translator_comment(unit.trans_unit_id):
-                        for note in unit.notes:
-                            note.translator_comment = translator_comments
-
+                    for note in unit.notes:
+                        if 'ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]' in comment.trans_unit_id:
+                            note.translator_comment = reduce(lambda x, y: x.join(y.translator_comment), comment.notes,
+                                                             '')
+                        elif 'ibExternalUserDefinedRuntimeAttributesLocalizableStrings[1]' in comment.trans_unit_id:
+                            note.size = reduce(lambda x, y: x.join(y.size), comment.notes,
+                                               '')
                 file.body.trans_units.remove(comment)
 
     def write_to_file(self, filename):
@@ -229,7 +230,8 @@ class Body:
 
     @classmethod
     def get_units_with_id(cls, body, unit_id):
-        return filter(lambda trans_unit: (unit_id in trans_unit.trans_unit_id), body.trans_units)
+        return filter(lambda trans_unit: (unit_id in trans_unit.trans_unit_id) and not (
+            Xliff.is_translator_comment(trans_unit.trans_unit_id)), body.trans_units)
 
 
 class TransUnit:
@@ -320,8 +322,9 @@ class Note:
     object_id = ""
     translator_comment = ""
 
-    def __init__(self, class_name, text, object_id, translator_comment):
+    def __init__(self, class_name, size, text, object_id, translator_comment):
         self.class_name = class_name
+        self.size = size
         self.text = text
         self.object_id = object_id
         self.translator_comment = translator_comment
@@ -329,6 +332,7 @@ class Note:
     @classmethod
     def parse(cls, data):
         class_name = ""
+        size = ""
         text = ""
         object_id = ""
         translator_comment = ""
@@ -349,13 +353,17 @@ class Note:
                 if 'ObjectID' in properties:
                     object_id = properties['ObjectID']
 
-                if "ibExternalUserDefinedRuntimeAttributesLocalizableStrings" in data.text:
+                if "ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" in data.text:
                     key = object_id + '.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]'
                     translator_comment = properties[key]
+
+                if "ibExternalUserDefinedRuntimeAttributesLocalizableStrings[1]" in data.text:
+                    key = object_id + '.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[1]'
+                    size = properties[key]
             else:
                 translator_comment = data.text
 
-        return Note(class_name, text, object_id, translator_comment)
+        return Note(class_name, size, text, object_id, translator_comment)
 
     def toxml(self, parent):
         note = SubElement(parent, 'note')
@@ -363,13 +371,13 @@ class Note:
 
         if self.class_name != '':
             translator += self.class_name
-            if self.size == '':
-                translator += ': '
+        if self.size != '':
+            translator += ', ' + self.size
+        if self.translator_comment != '':
+            if translator == '':
+                translator = self.translator_comment
             else:
-                translator += ', ' + self.size + ': '
-
-        if self.text != '':
-            translator += self.text
+                translator += ': ' + self.translator_comment
 
         note.text = translator
 
